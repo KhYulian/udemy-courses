@@ -1,0 +1,41 @@
+*,
+::after,
+::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	// to define that 1 rem = 10px
+	font-size: 62.5%;
+
+	// @include respond(big-desktop) { <= 1800px
+	// 	font-size: 75%; // 1rem = 12, 12 / 16
+	// }
+	@media (min-width: 1800px) {
+		font-size: 75%;
+	}
+	@include respond(tab-land) {
+		font-size: 56.25%;
+	}
+	@include respond(tab-port) {
+		font-size: 50%;
+	}
+}
+body {
+	box-sizing: border-box;
+	word-spacing: 1px;
+	letter-spacing: 1px;
+	padding: 3rem;
+
+	@include respond(tab-port) {
+		padding: 0;
+	}
+	overflow-x: hidden;
+}
+
+::selection {
+	background-color: $color-primary;
+	color: $color-white;
+}

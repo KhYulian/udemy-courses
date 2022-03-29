@@ -1,0 +1,50 @@
+.feature-box {
+	display: flex;
+	flex-direction: column;
+
+	padding: 3rem;
+	text-align: center;
+	background-color: rgba($color-white, 0.8);
+	border-radius: 3px;
+	box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+	font-size: $font-size-default;
+
+	transition: all 0.2s;
+
+	@include respond(tab-port) {
+		padding: 2rem;
+	}
+
+	&:hover {
+		transform: translateY(-3rem) scale(1.05);
+		box-shadow: 0 4rem 6rem rgba($color-black, 0.25);
+	}
+
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-bottom: 0.2rem;
+		margin-bottom: 1.8rem;
+
+		font-size: 6rem;
+
+		background: linear-gradient(
+			to bottom,
+			$color-primary-light,
+			$color-primary-light
+		);
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		color: transparent;
+
+		@include respond(tab-port) {
+			margin-bottom: 0;
+		}
+	}
+
+	&__text {
+		flex: 1;
+	}
+}

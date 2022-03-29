@@ -1,0 +1,17 @@
+{
+	"name": "node-farm",
+	"version": "1.0.0",
+	"description": "This is my first node.js project which is using multiple node.js modules such as http fs and url. In this project I am working reading files using fs.readFile, creat local server, routing, and load different templates depending on query string.",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon index.js"
+	},
+	"author": "Yulian Khomechko",
+	"license": "ISC",
+	"dependencies": {
+		"slugify": "^1.6.5"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.15"
+	}
+}

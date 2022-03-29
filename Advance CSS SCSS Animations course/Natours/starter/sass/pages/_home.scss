@@ -1,0 +1,127 @@
+.section-about {
+	margin-top: -20vh;
+	padding: 32rem 0 40rem;
+
+	background-color: $color-gray-light-1;
+
+	@include respond(tab-port) {
+		padding: 24rem 0 16rem;
+	}
+}
+
+.section-features {
+	padding: 20rem 0;
+	margin-top: -12rem;
+	background-image: linear-gradient(
+			to right,
+			rgba($color-primary-light, 0.8),
+			rgba($color-primary-dark, 0.8)
+		),
+		url('../img/nat-4.jpg');
+
+	@include respond(tab-port) {
+		background-image: linear-gradient(
+				to right,
+				rgba($color-primary-light, 0.8),
+				rgba($color-primary-dark, 0.8)
+			),
+			url('../img/nat-4-small.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	transform: skewY(-7deg);
+
+	@include respond(tab-port) {
+		padding: 10rem 0;
+	}
+
+	// direct child selector
+	& > * {
+		transform: skewY(7deg);
+	}
+
+	& .row {
+		display: flex;
+
+		@include respond(tab-port) {
+			display: block;
+		}
+	}
+
+	[class^='col'] {
+		display: flex;
+	}
+}
+
+.section-tours {
+	margin-top: -11rem;
+	padding: 26rem 0 15rem;
+
+	background-color: $color-gray-light-1;
+
+	@include respond(tab-port) {
+		padding: 20rem 0 7rem;
+	}
+}
+
+.section-stories {
+	position: relative;
+	padding: 15rem 0;
+
+	@include respond(tab-port) {
+		padding: 7rem 0;
+	}
+}
+
+.section-book {
+	padding: 15rem 0;
+	background-image: linear-gradient(
+		to right bottom,
+		$color-primary-light,
+		$color-primary-dark
+	);
+
+	@include respond(phone) {
+		padding: 7rem 0;
+	}
+
+	.book {
+		background-image: linear-gradient(
+				105deg,
+				rgba($color-white, 0.9) 0%,
+				rgba($color-white, 0.9) 50%,
+				transparent 50%
+			),
+			url('../../img/nat-10.jpg');
+
+		&__form {
+			width: 50%;
+			padding: 6rem;
+		}
+
+		@include respond(tab-land) {
+			background-image: linear-gradient(
+					105deg,
+					rgba($color-white, 0.9) 0%,
+					rgba($color-white, 0.9) 100%,
+					transparent 100%
+				),
+				url('../../img/nat-10-small.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+
+			&__form {
+				width: 50%;
+				padding: 6rem;
+
+				@include respond(tab-land) {
+					width: 80%;
+				}
+				@include respond(phone) {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,1 @@
+Components - building blocks, independent and reusable.

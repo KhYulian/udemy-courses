@@ -1,0 +1,130 @@
+.story {
+	width: 75%;
+	min-height: 28rem;
+	margin: 0px auto;
+	box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+	background-color: rgba($color-white, 0.5);
+	border-radius: 3px;
+	padding: 6rem;
+	padding-left: 9rem;
+	font-size: $font-size-default;
+	transform: skewX(-12deg);
+
+	&__shape {
+		position: relative;
+		// width and height also must be defined
+		width: 15rem;
+		height: 15rem;
+
+		border-radius: 50%;
+
+		// element must be floated
+		float: left;
+		-webkit-shape-outside: circle(50% at 50% 50%);
+		shape-outside: circle(50% at 50% 50%);
+		-webkit-clip-path: circle(50% at 50% 50%);
+		clip-path: circle(50% at 50% 50%);
+		// it's better to use translate to posotion floated elements
+		transform: translateX(-3rem) skewX(12deg);
+	}
+
+	&__img {
+		transition: all 0.8s;
+		height: 100%;
+		transform: translateX(-4rem) scale(1.4);
+
+		transition: all 0.6s;
+	}
+
+	&__caption {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, 20%);
+		opacity: 0;
+
+		text-align: center;
+		text-transform: uppercase;
+		color: $color-white;
+
+		transition: all 0.6s;
+		backface-visibility: hidden;
+	}
+
+	&__text {
+		transform: skewX(12deg);
+	}
+
+	&:hover &__caption {
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+	&:hover &__img {
+		transform: translateX(-4rem) scale(1.1);
+		filter: blur(1px) brightness(75%);
+	}
+
+	@include respond(tab-port) {
+		width: 90%;
+		min-height: 28rem;
+		box-shadow: 0 1.5rem 3rem rgba($color-black, 0.1);
+		padding: 4rem;
+		padding-left: 9rem;
+		font-size: $font-size-default;
+		transform: skewX(0);
+
+		&__shape {
+			position: relative;
+			// width and height also must be defined
+			width: 15rem;
+			height: 15rem;
+
+			border-radius: 50%;
+
+			// element must be floated
+			float: left;
+			-webkit-shape-outside: circle(50% at 50% 50%);
+			shape-outside: circle(50% at 50% 50%);
+			-webkit-clip-path: circle(50% at 50% 50%);
+			clip-path: circle(50% at 50% 50%);
+			// it's better to use translate to posotion floated elements
+			transform: translateX(-3rem) skewX(0deg);
+		}
+
+		&__img {
+			transition: all 0.8s;
+			height: 100%;
+			transform: translateX(-4rem) scale(1.4);
+
+			transition: all 0.6s;
+		}
+
+		&__caption {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, 20%);
+			opacity: 0;
+
+			text-align: center;
+			text-transform: uppercase;
+			color: $color-white;
+
+			transition: all 0.6s;
+			backface-visibility: hidden;
+		}
+
+		&__text {
+			transform: skewX(0deg);
+		}
+
+		&:hover &__caption {
+			opacity: 1;
+			transform: translate(-50%, -50%);
+		}
+		&:hover &__img {
+			transform: translateX(-4rem) scale(1.1);
+			filter: blur(1px) brightness(75%);
+		}
+	}
+}

@@ -1,0 +1,102 @@
+.footer {
+	padding: 8rem 4rem;
+	background-color: $color-black-2;
+
+	@include respond(tab-port) {
+		padding: 4rem 2rem;
+	}
+	@include respond(phone) {
+		padding: 2.5rem 1.5rem;
+	}
+
+	&__logo-box {
+		margin-bottom: 6rem;
+
+		text-align: center;
+
+		@include respond(tab-port) {
+			margin-bottom: 3rem;
+		}
+		@include respond(phone) {
+			margin-bottom: 2rem;
+		}
+
+		img {
+			width: 120px;
+
+			@include respond(tab-port) {
+				width: 80px;
+			}
+
+			@include respond(phone) {
+				width: auto;
+			}
+		}
+	}
+
+	&__nav {
+		text-align: center;
+	}
+
+	&__list {
+		display: inline-flex;
+		column-gap: 3rem;
+		padding-top: 1rem;
+		border-top: 1px solid $color-gray-dark;
+		list-style: none;
+
+		@include respond(phone) {
+			column-gap: 1rem;
+		}
+	}
+
+	&__link:link,
+	&__link:visited {
+		position: relative;
+		color: $color-gray-light-2;
+		text-decoration: none;
+
+		font-size: 24px;
+		font-weight: 300;
+		text-transform: uppercase;
+
+		transition: all 0.4s;
+
+		@include respond(tab-port) {
+			font-size: 1.8rem;
+		}
+		@include respond(phone) {
+			font-size: 1.2rem;
+		}
+	}
+	&__link::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 50%;
+		transform: translateX(-50%);
+
+		height: 1px;
+		width: 0px;
+		background-color: $color-primary;
+
+		transition: all 0.2s;
+	}
+	&__link:hover {
+		color: $color-primary;
+	}
+	&__item {
+		transition: all 0.2s;
+	}
+	&__item:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+	}
+	&__link:hover::after {
+		width: 100%;
+	}
+	&__link:active &__item {
+		transform: translateY(0);
+		box-shadow: none;
+	}
+}

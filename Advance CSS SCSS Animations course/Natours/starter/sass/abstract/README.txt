@@ -1,0 +1,1 @@
+This folder is intended for files that won't output any css (variables, mixins...).
