@@ -2,8 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
-
-
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { UsersComponent } from "./users/users.component";
@@ -14,8 +12,8 @@ import { ServerComponent } from "./servers/server/server.component";
 import { ServersService } from "./servers/servers.service";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { AppRoutingModule } from "./app-routing.module";
-
-
+import { AuthService } from "./auth.service";
+import { AuthGuardService } from "./auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +27,7 @@ import { AppRoutingModule } from "./app-routing.module";
     NotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
-  providers: [ServersService],
+  providers: [ServersService, AuthService, AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
