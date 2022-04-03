@@ -24,7 +24,11 @@ const appRoutes: Routes = [
     path: "servers",
     component: ServersComponent,
     children: [
-      { path: ":id", component: ServerComponent, resolve: {server: ServerResolver} },
+      {
+        path: ":id",
+        component: ServerComponent,
+        resolve: { server: ServerResolver },
+      },
       {
         path: ":id/edit",
         component: EditServerComponent,
@@ -43,7 +47,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
