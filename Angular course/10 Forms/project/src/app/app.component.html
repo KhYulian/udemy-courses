@@ -11,7 +11,14 @@
               class="form-control"
               name="username"
               ngModel
+              required
+              #username
             />
+            <span
+              class="help-block"
+              *ngClass="!username.valid && username.touched"
+              >Please enter a valid username</span
+            >
           </div>
           <button class="btn btn-default" type="button">
             Suggest an Username
@@ -24,17 +31,38 @@
               class="form-control"
               name="email"
               ngModel
+              required
+              email=""
+              #email="ngModel"
             />
+            <span class="help-block" *ngIf="!email.valid && email.touched"
+              >Please enter a valid email!</span
+            >
           </div>
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
-          <select id="secret" class="form-control" name="secret" ngModel>
+          <select
+            id="secret"
+            class="form-control"
+            name="secret"
+            [ngModel]="defaultQuestion"
+          >
             <option value="pet">Your first Pet?</option>
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="form-group">
+          <textarea
+            name="questionAnswer"
+            rows="3"
+            [(ngModel)]="answer"
+          ></textarea>
+          <p>Your reply is: {{ answer }}</p>
+        </div>
+        <button [disabled]="!form.valid" class="btn btn-primary" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   </div>
