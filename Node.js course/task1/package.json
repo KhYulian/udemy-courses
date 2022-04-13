@@ -1,0 +1,27 @@
+{
+	"name": "node-task-1",
+	"version": "1.0.0",
+	"main": "app.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"keywords": [],
+	"author": "Yulian_Khomechko",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.1",
+		"body-parser": "^1.19.2",
+		"cors": "^2.8.5",
+		"express": "^4.17.3",
+		"morgan": "^1.10.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://gitlab.com/khomechkoyulian/note-task-1.git"
+	},
+	"bugs": {
+		"url": "https://gitlab.com/khomechkoyulian/note-task-1/issues"
+	},
+	"homepage": "https://gitlab.com/khomechkoyulian/note-task-1#readme",
+	"description": ""
+}
