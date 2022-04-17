@@ -16,7 +16,6 @@ exports.addTruck = catchAsync(async function (req, res, next) {
 
 	await Truck.create({
 		created_by: currentUserID,
-		
 		type
 	});
 
@@ -66,14 +65,19 @@ exports.deleteTruck = catchAsync(async function (req, res, next) {
 			return next(
 				new AppError('You are not allowed to delete this truck.', 403)
 			);
-
+		if (truck.assigned_to == req.credentials.userID)
+			return next(
+				new AppError(
+					'You are not allowed to delete assigned to you trucks.',
+					403
+				)
+			);
 		res.status(200).json({ message: 'Truck deleted successfully.' });
 	});
 });
 
 exports.assignTruck = catchAsync(async function (req, res, next) {
 	const truckID = req.params.id;
-
 
 	Truck.findOneAndUpdate(
 		{ _id: truckID },

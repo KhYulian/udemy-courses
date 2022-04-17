@@ -15,17 +15,19 @@ const loadSchema = new mongoose.Schema({
 	},
 	assigned_to: {
 		type: String,
-		required: [true, 'Enter to whom this load is assigned.']
+		default: null
 	},
 	status: {
 		type: String,
 		required: [true, 'Enter the status of the load.'],
-		enum: ['NEW', 'POSTED', 'ASSIGNED', 'SHIPPED']
+		enum: ['NEW', 'POSTED', 'ASSIGNED', 'SHIPPED'],
+		default: 'NEW'
 	},
 	state: {
 		type: String,
 		required: [true, 'Enter the state of the load.'],
-		enum: ['En route to Pick Up', 'Arrived to Pick Up', 'En route to delivery', 'Arrived to delivery']
+		enum: ['En route to Pick Up', 'Arrived to Pick Up', 'En route to delivery', 'Arrived to delivery'],
+		default: 'En route to Pick Up'
 	},
 	name: {
 		type: String,

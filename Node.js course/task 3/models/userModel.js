@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
 	role: {
 		type: String,
 		required: [true, 'Enter your role.'],
-		enum: ['DRIVER', 'SYSTEM', 'USER'],
+		enum: ['DRIVER', 'SYSTEM', 'USER', 'SHIPPER'],
 		default: 'USER'
 	},
 	email: {
