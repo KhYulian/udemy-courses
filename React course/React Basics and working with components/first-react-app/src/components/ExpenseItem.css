@@ -37,6 +37,9 @@
 	font-weight: bold;
 	color: white;
 }
+.expense-item__date {
+	text-align: center;
+}
 
 @media (min-width: 580px) {
 	.expense-item__description {

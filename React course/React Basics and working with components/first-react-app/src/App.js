@@ -1,31 +1,31 @@
 // Each component should be in a separate file which we import into App.js
 import ExpenseItem from './components/ExpenseItem';
 
-function createDate() {
-	return new Date().toDateString().split(' ').slice(1).join(' ');
-}
+// function createDate() {
+// 	return new Date().toDateString().split(' ').slice(1).join(' ');
+// }
 
 function App() {
 	const expenses = [
 		{
 			title: 'Car insuranse',
 			amount: 345.52,
-			date: createDate()
+			date: new Date()
 		},
 		{
 			title: 'Food',
 			amount: 552.67,
-			date: createDate()
+			date: new Date()
 		},
 		{
 			title: 'Rent',
 			amount: 2672.34,
-			date: createDate()
+			date: new Date()
 		},
 		{
 			title: 'New Computer',
 			amount: 1120.99,
-			date: createDate()
+			date: new Date()
 		}
 	];
 	// React uses declarative approach
@@ -47,6 +47,11 @@ function App() {
 				title={expenses[2].title}
 				amount={expenses[2].amount}
 				date={expenses[2].date}
+			></ExpenseItem>
+			<ExpenseItem
+				title={expenses[3].title}
+				amount={expenses[3].amount}
+				date={expenses[3].date}
 			></ExpenseItem>
 		</div>
 	);
