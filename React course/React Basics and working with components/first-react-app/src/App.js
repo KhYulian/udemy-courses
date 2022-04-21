@@ -1,10 +1,13 @@
+// Each component should be in a separate file which we import into App.js
+import ExpenseItem from './components/ExpenseItem';
+
 function App() {
+	// React uses declarative approach
 	return (
 		<div className="App">
 			<header className="App-header">Let's get started</header>
-			<p>This is also visible</p>
-			<p>That's how we work with component</p>
-			<p>React uses declarative approach. We define the desired end state.</p>
+			{/* We use components as HTML elements */}
+			<ExpenseItem></ExpenseItem>
 		</div>
 	);
 }
