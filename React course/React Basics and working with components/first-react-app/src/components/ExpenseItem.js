@@ -5,15 +5,19 @@ import './ExpenseItem.css';
 
 // A component in React is just a JavaScript function
 function ExpenseItem() {
+	const expenseDate = new Date().toDateString().split(' ').slice(1).join(' ');
+	const expenseTitle = 'Car Insurance';
+	const expenseAmount = 345.56;
 	// return jsx code
 	return (
 		// Wrap HTML code into parentheses
 		// We can return only one root element
 		<div className="expense-item">
-			<div>April 21th 2022</div>
+			{/* you can run basic JavaScript expressions inside curly braces */}
+			<div> {expenseDate} </div>
 			<div className="expense-item__description">
-				<h2>Car Insurance</h2>
-				<div className="expense-item__price">243.56$</div>
+				<h2>{expenseTitle}</h2>
+				<div className="expense-item__price">{expenseAmount}$</div>
 			</div>
 		</div>
 	);
