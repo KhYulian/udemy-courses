@@ -2,6 +2,7 @@
 import './ExpenseItem.css';
 
 // Import another component into this component
+import Card from './Card';
 import ExpenseDate from './ExpenseDate';
 
 // Repeat the filename in the name of function
@@ -14,14 +15,14 @@ function ExpenseItem(props) {
 	return (
 		// Wrap HTML code into parentheses
 		// We can return only one root element
-		<div className="expense-item">
+		<Card className="expense-item">
 			{/* you can run basic JavaScript expressions inside curly braces */}
 			<ExpenseDate date={props.date} />
 			<div className="expense-item__description">
 				<h2>{props.title}</h2>
 				<div className="expense-item__price">{props.amount}$</div>
 			</div>
-		</div>
+		</Card>
 	);
 }
 
