@@ -1,0 +1,17 @@
+.expense-date {
+	text-align: center;
+	border-right: 1px solid rgba(0, 0, 0, 0.15);
+	padding-right: 1rem;
+}
+
+.expense-date__month {
+	font-weight: 600;
+	font-size: 1.2em;
+}
+.expense-date__day {
+	font-size: 1.4em;
+	font-weight: 700;
+}
+.expense-date__year {
+	color: rgba(0, 0, 0, 0.8);
+}
