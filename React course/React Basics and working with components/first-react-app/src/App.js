@@ -1,5 +1,5 @@
 // Each component should be in a separate file which we import into App.js
-import ExpenseItems from './components/ExpenseItems';
+import ExpenseItems from './components/Expenses/ExpenseItems';
 
 // function createDate() {
 // 	return new Date().toDateString().split(' ').slice(1).join(' ');

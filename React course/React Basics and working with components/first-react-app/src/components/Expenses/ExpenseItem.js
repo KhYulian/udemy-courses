@@ -2,7 +2,7 @@
 import './ExpenseItem.css';
 
 // Import another component into this component
-import Card from './Card';
+import Card from './../UI/Card';
 import ExpenseDate from './ExpenseDate';
 
 // Repeat the filename in the name of function
