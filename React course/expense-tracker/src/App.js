@@ -25,10 +25,16 @@ function App() {
 			date: new Date()
 		}
 	];
+
+	function addExpenseHandler(expenses) {
+		console.log('In App.js');
+		console.log(expenses);
+	}
+
 	// React uses declarative approach
 	return (
 		<div className="App">
-			<NewExpense />
+			<NewExpense onAddExpense={addExpenseHandler} />
 			{/* We use components as HTML elements */}
 			<ExpenseItems expenses={expenses} />
 		</div>
