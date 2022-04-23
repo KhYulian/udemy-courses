@@ -1,5 +1,6 @@
 // Each component should be in a separate file which we import into App.js
 import ExpenseItems from './components/Expenses/ExpenseItems';
+import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
 	const expenses = [
@@ -27,7 +28,7 @@ function App() {
 	// React uses declarative approach
 	return (
 		<div className="App">
-			<header className="App-header">Expenses</header>
+			<NewExpense />
 			{/* We use components as HTML elements */}
 			<ExpenseItems expenses={expenses} />
 		</div>
