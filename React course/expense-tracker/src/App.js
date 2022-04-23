@@ -1,3 +1,4 @@
+import './App.css';
 // Each component should be in a separate file which we import into App.js
 import ExpenseItems from './components/Expenses/ExpenseItems';
 import NewExpense from './components/NewExpense/NewExpense';
@@ -35,7 +36,7 @@ function App() {
 	return (
 		<div className="App">
 			<NewExpense onAddExpense={addExpenseHandler} />
-			{/* We use components as HTML elements */}
+			{/* We use components as HTML elements */}			
 			<ExpenseItems expenses={expenses} />
 		</div>
 	);

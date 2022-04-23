@@ -1,9 +1,0 @@
-.expense-items {
-	padding: 2rem;
-}
-
-@media screen and (max-width: 768px) {
-	.expense-items {
-		padding: 0rem;
-	}
-}
