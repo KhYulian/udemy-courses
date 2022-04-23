@@ -18,20 +18,26 @@ function ExpenseItems(props) {
 		return expense.date.getFullYear() + '' === filterYear;
 	});
 
+	let expensesContent = <h3>No expenses found</h3>;
+
+	if (filteredExpenses.length > 0) {
+		expensesContent = filteredExpenses.map(item => (
+			<ExpenseItem
+				key={item.id}
+				title={item.title}
+				amount={item.amount}
+				date={item.date}
+			/>
+		));
+	}
+
 	return (
 		<div className="expense-items">
 			<ExpenseFilter
 				defaultYear={filterYear}
 				onChangeFilter={filterChangeHandler}
 			/>
-			{filteredExpenses.map(item => (
-				<ExpenseItem
-					key={item.id}
-					title={item.title}
-					amount={item.amount}
-					date={item.date}
-				/>
-			))}
+			{expensesContent}
 
 			{/* <ExpenseItem
 				title={expenses[0].title}
