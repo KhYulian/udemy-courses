@@ -51,6 +51,9 @@ function ExpenseForm(props) {
 			amount: enteredAmount,
 			date: new Date(enteredDate)
 		};
+		setEnteredTitle('');
+		setEnteredAmount('');
+		setEnteredDate('');
 	}
 
 	return (
@@ -58,11 +61,17 @@ function ExpenseForm(props) {
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label htmlFor="title">Title</label>
-					<input onChange={titleChangeHandler} type="text" id="title" />
+					<input
+						value={enteredTitle}
+						onChange={titleChangeHandler}
+						type="text"
+						id="title"
+					/>
 				</div>
 				<div className="new-expense__control">
 					<label htmlFor="amount">Amount</label>
 					<input
+						value={enteredAmount}
 						onChange={amountChangeHandler}
 						type="number"
 						min="0.01"
@@ -73,6 +82,7 @@ function ExpenseForm(props) {
 				<div className="new-expense__control">
 					<label htmlFor="date">Date</label>
 					<input
+						value={enteredDate}
 						onChange={dateChangeHandler}
 						type="date"
 						min="2018-01-01"
