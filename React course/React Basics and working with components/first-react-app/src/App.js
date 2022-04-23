@@ -1,10 +1,6 @@
 // Each component should be in a separate file which we import into App.js
 import ExpenseItems from './components/Expenses/ExpenseItems';
 
-// function createDate() {
-// 	return new Date().toDateString().split(' ').slice(1).join(' ');
-// }
-
 function App() {
 	const expenses = [
 		{
@@ -31,7 +27,7 @@ function App() {
 	// React uses declarative approach
 	return (
 		<div className="App">
-			<header className="App-header">Let's get started</header>
+			<header className="App-header">Expenses</header>
 			{/* We use components as HTML elements */}
 			<ExpenseItems expenses={expenses} />
 		</div>
