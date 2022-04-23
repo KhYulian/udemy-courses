@@ -12,6 +12,8 @@ function ExpenseItems(props) {
 
 	function filterChangeHandler(selectedYear) {
 		setFilterYear(selectedYear);
+		// console.log('ExpenseItems.js');
+		// console.log(selectedYear);
 	}
 
 	return (
