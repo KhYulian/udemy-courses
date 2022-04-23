@@ -12,9 +12,11 @@ function ExpenseItems(props) {
 
 	function filterChangeHandler(selectedYear) {
 		setFilterYear(selectedYear);
-		// console.log('ExpenseItems.js');
-		// console.log(selectedYear);
 	}
+
+	const filteredExpenses = expenses.filter(expense => {
+		return expense.date.getFullYear() + '' === filterYear;
+	});
 
 	return (
 		<div className="expense-items">
@@ -22,8 +24,13 @@ function ExpenseItems(props) {
 				defaultYear={filterYear}
 				onChangeFilter={filterChangeHandler}
 			/>
-			{expenses.map(item => (
-				<ExpenseItem title={item.title} amount={item.amount} date={item.date} />
+			{filteredExpenses.map(item => (
+				<ExpenseItem
+					key={item.id}
+					title={item.title}
+					amount={item.amount}
+					date={item.date}
+				/>
 			))}
 
 			{/* <ExpenseItem
