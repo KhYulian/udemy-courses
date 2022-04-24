@@ -3,7 +3,6 @@ import { useState } from 'react';
 import './ExpenseItems.css';
 
 import ExpenseFilter from './ExpenseFilter';
-import ExpenseItem from './ExpenseItem';
 import ExpensesList from './ExpensesList';
 
 function ExpenseItems(props) {

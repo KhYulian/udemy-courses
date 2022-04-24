@@ -5,7 +5,7 @@ import './ExpenseForm.css';
 function ExpenseForm(props) {
 	const [enteredTitle, setEnteredTitle] = useState('');
 	const [enteredAmount, setEnteredAmount] = useState('');
-	const [enteredDate, setEnteredDate] = useState('');
+	const [enteredDate, setEnteredDate] = useState('');	
 
 	// const [userInput, setUserInput] = useState({
 	// 	enteredTitle: '',
@@ -56,11 +56,11 @@ function ExpenseForm(props) {
 
 		setEnteredTitle('');
 		setEnteredAmount('');
-		setEnteredDate('');
+		setEnteredDate('');		
 	}
 
 	return (
-		<form onSubmit={submitHandler}>
+		<form onSubmit={submitHandler}>		
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label htmlFor="title">Title</label>
