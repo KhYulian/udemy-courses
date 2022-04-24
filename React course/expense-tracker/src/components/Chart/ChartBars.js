@@ -3,9 +3,9 @@ import './ChartBar.css';
 function ChartBar(props) {
 	let barFillHight = '0%';
 
-	if (props.max > 0)
-		barFillHight = Math.round((props.value / props.max) * 100) + '%';
-
+	if (props.maxValue > 0)
+		barFillHight = Math.round((props.value / props.maxValue) * 100) + '%';
+	
 	return (
 		<div className="chart-bar">
 			<div className="chart-bar__inner">
