@@ -9,13 +9,26 @@ import ErrorModal from '../UI/ErrorModal';
 function AddUser(props) {
 	const [enteredUsername, setenteredUsername] = useState('');
 	const [enteredAge, setenteredAge] = useState('');
+	const [error, setError] = useState();
 
 	function submitHandler(ev) {
 		ev.preventDefault();
 
-		if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0)
+		if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+			setError({
+				title: 'Invalid Input',
+				message: 'Please enter valid name and age.'
+			});
 			return;
-		if (+enteredAge < 1) return;
+		}
+		if (+enteredAge < 1) {
+			setError({
+				title: 'Invalid Age',
+				message: 'Age should be greater than 0.'
+			});
+
+			return;
+		}
 
 		props.onAddUser(enteredUsername, enteredAge);
 
@@ -29,10 +42,19 @@ function AddUser(props) {
 	function userAgeChangeHandler(ev) {
 		setenteredAge(ev.target.value);
 	}
+	function closeModalHandler() {
+		setError(null);
+	}
 
 	return (
 		<div>
-			<ErrorModal title="An error occured" message="Something went wrong" />
+			{error && (
+				<ErrorModal
+					title={error.title}
+					message={error.message}
+					onCloseModal={closeModalHandler}
+				/>
+			)}
 			<Card className={styles.input}>
 				<form onSubmit={submitHandler}>
 					<label htmlFor="username">User Name: </label>
