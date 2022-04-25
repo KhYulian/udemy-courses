@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import styles from './AddUser.module.css';
 
@@ -15,6 +15,8 @@ function AddUser(props) {
 		if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0)
 			return;
 		if (+enteredAge < 1) return;
+
+		props.onAddUser({ username: enteredUsername, age: enteredAge });
 
 		setenteredUsername('');
 		setenteredAge('');
