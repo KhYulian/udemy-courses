@@ -11,11 +11,14 @@ function App() {
 	function userAddedHandler(username, age) {
 		setusers(ps => [{ username, age, id: Math.random() }, ...ps]);
 	}
+	function deleteUserHandler(id) {
+		setusers(ps => ps.filter(user => user.id !== id));
+	}
 
 	return (
 		<div>
 			<AddUser onAddUser={userAddedHandler} />
-			<UsersList users={users} />
+			<UsersList users={users} onDeleteUser={deleteUserHandler} />
 		</div>
 	);
 }
