@@ -41,18 +41,19 @@ const Login = props => {
 		isValid: null
 	});
 
+	const { isValid: isEmailValid } = emailState;
+	const { isValid: isPasswordValid } = passwordState;
+
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			setFormIsValid(
-				emailState.value.includes('@') && passwordState.value.trim().length > 6
-			);
+			setFormIsValid(isEmailValid && isPasswordValid);
 			console.log('checking form validity');
 		}, 500);
 		return () => {
 			clearTimeout(timer);
 			console.log('Cleanup runs');
 		}; // cleanup function
-	}, [emailState.value, passwordState.value]);
+	}, [isEmailValid, isPasswordValid]);
 
 	useEffect(() => {
 		console.log('Effect running');
@@ -74,6 +75,8 @@ const Login = props => {
 
 	const passwordChangeHandler = event => {
 		dispatchPassword({ type: 'USER_INPUT', value: event.target.value });
+
+		// setFormIsValid(emailState.isValid && event.target.value.trim().length > 6);
 		// setFormIsValid(
 		// 	event.target.value.trim().length > 6 && emailState.includes('@')
 		// );
