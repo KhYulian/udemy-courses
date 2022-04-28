@@ -5,6 +5,9 @@ import Home from './components/Home/Home';
 import MainHeader from './components/MainHeader/MainHeader';
 import AuthContext from './components/store/authContex';
 
+// Only call React Hooks in React Functions
+// Only call React Hooks at the Top Level
+
 function App() {
 	const ctx = useContext(AuthContext);
 
