@@ -26,7 +26,7 @@ function App() {
 			<div className="app">
 				<h1>Let's go.</h1>
 				<Button onClick={togglePHandler}>Toggle Paragraph</Button>
-				<DemoOutput show={showParagraph} />
+				<DemoOutput show={false} />
 			</div>
 		</>
 	);
