@@ -4,7 +4,7 @@
 // Re-Evaluating Components !== Re-Rendering the DOM
 // Changes to the real DOM are only made for differences between evaluations
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import './App.css';
 
@@ -17,9 +17,9 @@ function App() {
 	);
 	const [showParagraph, setshowParagraph] = useState(false);
 
-	const togglePHandler = () => {
+	const togglePHandler = useCallback(() => {
 		setshowParagraph(ps => !ps);
-	};
+	}, []); // dependencies are as in useEffect
 
 	return (
 		<>
