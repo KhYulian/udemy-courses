@@ -15,16 +15,23 @@ function App() {
 	console.log(
 		'Component function evaluated. - Runs every time each time state is changed. So component is revaluated every time state is changed.'
 	);
+	const [isToggleAllowed, setIsToggleAllowed] = useState(false);
 	const [showParagraph, setshowParagraph] = useState(false);
 
 	const togglePHandler = useCallback(() => {
-		setshowParagraph(ps => !ps);
-	}, []); // dependencies are as in useEffect
+		if (isToggleAllowed) {
+			setshowParagraph(ps => !ps);
+		}
+	}, [isToggleAllowed]); // dependencies are as in useEffect
+	const allowToggleHandler = useCallback(() => {
+		setIsToggleAllowed(ps => !ps);
+	}, []);
 
 	return (
 		<>
 			<div className="app">
 				<h1>Let's go.</h1>
+				<Button onClick={allowToggleHandler}>Allow Toggling</Button>n
 				<Button onClick={togglePHandler}>Toggle Paragraph</Button>
 				<DemoOutput show={false} />
 			</div>
