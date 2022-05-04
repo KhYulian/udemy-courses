@@ -1,0 +1,8 @@
+.list {
+	list-style: none;
+	padding: none;
+	text-align: left;
+}
+.list h2 {
+	text-align: center;
+}

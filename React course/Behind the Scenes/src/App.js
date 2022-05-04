@@ -4,36 +4,26 @@
 // Re-Evaluating Components !== Re-Rendering the DOM
 // Changes to the real DOM are only made for differences between evaluations
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 
 import './App.css';
 
 import Button from './components/UI/Button/Button';
-import DemoOutput from './components/UI/Button/demo/DemoOutput';
+import DemoList from './components/UI/Button/demo/DemoList';
 
 function App() {
-	console.log(
-		'Component function evaluated. - Runs every time each time state is changed. So component is revaluated every time state is changed.'
-	);
-	const [isToggleAllowed, setIsToggleAllowed] = useState(false);
-	const [showParagraph, setshowParagraph] = useState(false);
+	const testArray = useMemo(() => [4, 7, 1, 23, 4], []);
 
-	const togglePHandler = useCallback(() => {
-		if (isToggleAllowed) {
-			setshowParagraph(ps => !ps);
-		}
-	}, [isToggleAllowed]); // dependencies are as in useEffect
-	const allowToggleHandler = useCallback(() => {
-		setIsToggleAllowed(ps => !ps);
-	}, []);
+	const [title, settitle] = useState('My List');
 
+	const changeTitleHandler = () => {
+		settitle('New Title');
+	};
 	return (
 		<>
 			<div className="app">
-				<h1>Let's go.</h1>
-				<Button onClick={allowToggleHandler}>Allow Toggling</Button>n
-				<Button onClick={togglePHandler}>Toggle Paragraph</Button>
-				<DemoOutput show={false} />
+				<DemoList title={title} list={testArray} />
+				<Button onClick={changeTitleHandler}>Change Title</Button>
 			</div>
 		</>
 	);
