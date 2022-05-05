@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 // !!! function name must start wiht use !!!
 const useCounter = (step) => {
@@ -10,7 +10,7 @@ const useCounter = (step) => {
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, []);
+	}, [step]);
 
     return counter;
 };
