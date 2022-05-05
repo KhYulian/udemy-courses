@@ -3,18 +3,22 @@ import { useState, useRef } from 'react';
 
 const SimpleInput = props => {
 	const [enteredName, setenteredName] = useState('');
+	const [error, setError] = useState(null);
 	const nameInputRef = useRef();
 
 	const nameInputChangeHandler = event => {
 		setenteredName(event.target.value);
+		setError(null);
 	};
 
 	const formSubmitionHandler = event => {
 		event.preventDefault();
-		if (enteredName.trim().length < 1) return;
+		// Chech if user entered value.
+		if (enteredName.trim() === '') return setError('Please, enter your name.');
 
 		// nameInputRef.current.value = '' ===> Don't manipulate the DOM
 		setenteredName('');
+		setError(null);
 	};
 
 	return (
@@ -27,6 +31,8 @@ const SimpleInput = props => {
 					id="name"
 					ref={nameInputRef}
 					value={enteredName}
+					placeholder={`Plese, enter your name${error ? ' !!!' : '.'}`}
+					className={error && 'invalid'}
 				/>
 			</div>
 			<div className="form-actions">
