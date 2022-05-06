@@ -15,7 +15,7 @@ const BasicForm = props => {
 		inputChangeHandler: firstNameChangeHandler,
 		inputBlurHandler: firstNameBlurHandler,
 		reset: firstNameReset
-	} = useInputBasicForm(value => value !== '');
+	} = useInputBasicForm(value => value.trim() !== '');
 
 	const {
 		value: enteredLastName,
@@ -24,7 +24,7 @@ const BasicForm = props => {
 		inputChangeHandler: lastNameChangeHandler,
 		inputBlurHandler: lastNameBlurHandler,
 		reset: lastNameReset
-	} = useInputBasicForm(value => value !== '');
+	} = useInputBasicForm(value => value.trim() !== '');
 
 	const {
 		value: enteredEmail,
