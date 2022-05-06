@@ -2,22 +2,24 @@ import { useState, useRef } from 'react';
 
 const SimpleInput = props => {
 	const [enteredName, setenteredName] = useState('');
-	const [error, setError] = useState(null);
+	const [error, setError] = useState(false);
 	const nameInputRef = useRef();
 
 	const nameInputChangeHandler = event => {
 		setenteredName(event.target.value);
-		setError(null);
+
+		if (nameInputRef.current.value.trim() === '') return setError(true);
+		setError(false);
 	};
 
 	const formSubmitionHandler = event => {
 		event.preventDefault();
 		// Chech if user entered value.
-		if (enteredName.trim() === '') return setError('Please, enter your name.');
+		if (enteredName.trim() === '') return setError(true);
 
 		// nameInputRef.current.value = '' ===> Don't manipulate the DOM
 		setenteredName('');
-		setError(null);
+		setError(false);
 	};
 	const nameInputBlurHandler = event => {
 		if (enteredName.trim() === '') return setError('Please, enter your name.');
@@ -30,12 +32,12 @@ const SimpleInput = props => {
 				<input
 					onChange={nameInputChangeHandler}
 					onBlur={nameInputBlurHandler}
-					type="text"
-					id="name"
 					ref={nameInputRef}
+					className={error ? 'invalid' : undefined}
+					type="text"
 					value={enteredName}
 					placeholder={`Plese, enter your name${error ? ' !!!' : '.'}`}
-					className={error && 'invalid'}
+					id="name"
 				/>
 			</div>
 			<div className="form-actions">
