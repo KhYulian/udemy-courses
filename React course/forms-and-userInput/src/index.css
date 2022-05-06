@@ -56,7 +56,7 @@ body {
 	background-color: rgba(246, 3, 3, 0.5);
 }
 .form-control input.invalid::placeholder {
-	color: #c80000;
+	color: #9d0202;
 }
 
 .control-group {

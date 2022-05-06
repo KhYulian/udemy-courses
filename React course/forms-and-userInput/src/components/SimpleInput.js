@@ -1,4 +1,3 @@
-import { getElementError } from '@testing-library/react';
 import { useState, useRef } from 'react';
 
 const SimpleInput = props => {
@@ -20,6 +19,9 @@ const SimpleInput = props => {
 		setenteredName('');
 		setError(null);
 	};
+	const nameInputBlurHandler = event => {
+		if (enteredName.trim() === '') return setError('Please, enter your name.');
+	};
 
 	return (
 		<form onSubmit={formSubmitionHandler}>
@@ -27,6 +29,7 @@ const SimpleInput = props => {
 				<label htmlFor="name">Your Name</label>
 				<input
 					onChange={nameInputChangeHandler}
+					onBlur={nameInputBlurHandler}
 					type="text"
 					id="name"
 					ref={nameInputRef}
