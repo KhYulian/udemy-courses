@@ -1,5 +1,5 @@
-import { toHaveFormValues } from '@testing-library/jest-dom/dist/matchers';
 import { useState, useRef } from 'react';
+import useInput from '../hooks/use-input';
 
 const isEmailValid = email => {
 	return /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
@@ -8,44 +8,62 @@ const isEmailValid = email => {
 };
 
 const SimpleInput = props => {
-	const [enteredName, setenteredName] = useState('');
-	const [enteredEmail, setEnteredEmail] = useState('');
-	const [nameIsValid, setNameIsValid] = useState(null);
-	const [emailIsValid, setEmailIsValid] = useState(null);
+	const {
+		value: enteredName,
+		isValid: nameIsValid,
+		hasError: nameInputHasError,
+		inputChangeHandler: nameInputChangeHandler,
+		inputBlurHandler: nameInputBlurHandler,
+		reset: resetNameInput
+	} = useInput(value => value.trim() !== '');
+	const {
+		value: enteredEmail,
+		isValid: emailIsValid,
+		hasError: emailInputHasError,
+		inputChangeHandler: emailInputChangeHandler,
+		inputBlurHandler: emailInputBlurHandler,
+		reset: resetEmailInput
+	} = useInput(value =>
+		/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+			value
+		)
+	);
+
+	// const [enteredName, setenteredName] = useState('');
+	// const [enteredEmail, setEnteredEmail] = useState('');
+	// const [nameIsValid, setNameIsValid] = useState(null);
+	// const [emailIsValid, setEmailIsValid] = useState(null);
 
 	const nameInputRef = useRef();
 	const emailInputRef = useRef();
 
-	const nameInputChangeHandler = event => {
-		setenteredName(event.target.value);
+	// const nameInputChangeHandler = event => {
+	// 	setenteredName(event.target.value);
 
-		if (nameInputRef.current.value.trim() === '') return setNameIsValid(false);
-		setNameIsValid(true);
-	};
-	const nameInputBlurHandler = event => {
-		if (enteredName.trim() === '') return setNameIsValid(false);
-	};
+	// 	if (nameInputRef.current.value.trim() === '') return setNameIsValid(false);
+	// 	setNameIsValid(true);
+	// };
+	// const nameInputBlurHandler = event => {
+	// 	if (enteredName.trim() === '') return setNameIsValid(false);
+	// };
 
-	const emailInputChangeHandler = event => {
-		setEnteredEmail(event.target.value);
+	// const emailInputChangeHandler = event => {
+	// 	setEnteredEmail(event.target.value);
 
-		if (isEmailValid(emailInputRef.current.value)) return setEmailIsValid(true);
-		setEmailIsValid(false);
-	};
-	const emailInputBlurHandler = event => {
-		if (!isEmailValid(event.target.value)) return setEmailIsValid(false);
-	};
+	// 	if (isEmailValid(emailInputRef.current.value)) return setEmailIsValid(true);
+	// 	setEmailIsValid(false);
+	// };
+	// const emailInputBlurHandler = event => {
+	// 	if (!isEmailValid(event.target.value)) return setEmailIsValid(false);
+	// };
 
 	const formSubmitionHandler = event => {
 		event.preventDefault();
-		// Chech if user entered value.
-		if (enteredName.trim() === '') setNameIsValid(false);
-		if (!isEmailValid(enteredEmail)) return setEmailIsValid(false);
 
-		setenteredName('');
-		setEnteredEmail('');
-		setNameIsValid(null);
-		setEmailIsValid(null);
+		if (!nameIsValid || !emailIsValid) return;
+
+		resetNameInput();
+		resetEmailInput();
 	};
 
 	return (
@@ -56,11 +74,11 @@ const SimpleInput = props => {
 					onChange={nameInputChangeHandler}
 					onBlur={nameInputBlurHandler}
 					ref={nameInputRef}
-					className={nameIsValid === false ? 'invalid' : undefined}
+					className={nameInputHasError ? 'invalid' : undefined}
 					type="text"
 					value={enteredName}
 					placeholder={`Plese, enter your name${
-						nameIsValid === toHaveFormValues ? ' !!!' : '.'
+						nameInputHasError ? ' !!!' : '.'
 					}`}
 					id="name"
 				/>
@@ -72,11 +90,11 @@ const SimpleInput = props => {
 					onChange={emailInputChangeHandler}
 					onBlur={emailInputBlurHandler}
 					ref={emailInputRef}
-					className={emailIsValid === false ? 'invalid' : undefined}
+					className={emailInputHasError ? 'invalid' : undefined}
 					type="email"
 					value={enteredEmail}
 					placeholder={`Plese, enter your email${
-						emailIsValid === false ? ' !!!' : '.'
+						emailInputHasError ? ' !!!' : '.'
 					}`}
 					id="email"
 				/>
