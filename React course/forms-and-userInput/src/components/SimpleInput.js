@@ -60,7 +60,12 @@ const SimpleInput = props => {
 	const formSubmitionHandler = event => {
 		event.preventDefault();
 
-		if (!nameIsValid || !emailIsValid) return;
+		if (!nameIsValid) {
+			return nameInputRef.current.focus();
+		}
+		if (!emailIsValid) {
+			return emailInputRef.current.focus();
+		}
 
 		resetNameInput();
 		resetEmailInput();
