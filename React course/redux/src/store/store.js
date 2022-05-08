@@ -5,14 +5,14 @@ const defaultState = {
 };
 
 const counterReducer = (state = defaultState, action) => {
-	if (action.type === 'increment') {
+	if (action.type === 'increase') {
 		return {
-			counter: state.counter + 1
+			counter: state.counter + action.value
 		};
 	}
-	if (action.type === 'decrement') {
+	if (action.type === 'decrease') {
 		return {
-			counter: state.counter - 1
+			counter: state.counter - action.value
 		};
 	}
 
