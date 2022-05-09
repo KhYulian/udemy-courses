@@ -11,16 +11,18 @@ const counterSlice = createSlice({
 	reducers: {
 		increase(state, action) {
 			// we can mutate state because it will automatically clone existing state and create new state object and overwrite state we are editing in immutable way.
-			state.counter = state.counter + action.value;
+			state.counter = state.counter + action.payload.value;
 		},
 		decrease(state, action) {
-			state.counter = state.counter - action.value;
+			state.counter = state.counter - action.payload.value;
 		},
 		toggleCounter(state, action) {
 			state.showCounter = !state.showCounter;
 		}
 	}
 });
+
+// counterSlice.actions.increase(); // returns an action object of this shape: { type: 'some-auto-generated unique identifier' }
 
 // const counterReducer = (state = initialState, action) => {
 // 	if (action.type === 'increase') {
@@ -49,7 +51,9 @@ const counterSlice = createSlice({
 // };
 
 const store = configureStore({
-	reducer: { counterReducer: counterSlice.reducer }
+	reducer: counterSlice.reducer
 });
+
+export const counterActions = counterSlice.actions;
 
 export default store;
