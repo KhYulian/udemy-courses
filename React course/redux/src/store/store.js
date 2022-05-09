@@ -5,7 +5,7 @@ const initialState = {
 	showCounter: false
 };
 
-createSlice({
+const counterSlice = createSlice({
 	name: 'counter',
 	initialState,
 	reducers: {
@@ -22,34 +22,34 @@ createSlice({
 	}
 });
 
-const counterReducer = (state = initialState, action) => {
-	if (action.type === 'increase') {
-		// state.counter++
-		// return state; - NEVER mutate existing state
+// const counterReducer = (state = initialState, action) => {
+// 	if (action.type === 'increase') {
+// 		// state.counter++
+// 		// return state; - NEVER mutate existing state
 
-		return {
-			...state,
-			counter: state.counter + action.value
-		};
-	}
-	if (action.type === 'decrease') {
-		return {
-			...state,
-			counter: state.counter - action.value
-		};
-	}
+// 		return {
+// 			...state,
+// 			counter: state.counter + action.value
+// 		};
+// 	}
+// 	if (action.type === 'decrease') {
+// 		return {
+// 			...state,
+// 			counter: state.counter - action.value
+// 		};
+// 	}
 
-	if (action.type === 'toggleCounter') {
-		return {
-			...state,
-			showCounter: !state.showCounter
-		};
-	}
-	return state;
-};
+// 	if (action.type === 'toggleCounter') {
+// 		return {
+// 			...state,
+// 			showCounter: !state.showCounter
+// 		};
+// 	}
+// 	return state;
+// };
 
 const store = configureStore({
-	reducer: counterReducer
+	reducer: { counterReducer: counterSlice.reducer }
 });
 
 export default store;
