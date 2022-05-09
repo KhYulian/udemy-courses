@@ -1,13 +1,18 @@
-import { useSelector, useDispatch, useStore } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import classes from './Counter.module.css';
 
 const Counter = () => {
 	// when you use useSelector react-redux will automatically set a subscription
 	const counter = useSelector(state => state.counter);
+	const showCounter = useSelector(state => state.showCounter);
 	const dispatch = useDispatch();
 
-	const toggleCounterHandler = () => {};
+	const toggleCounterHandler = () => {
+		dispatch({ type: 'toggleCounter' });
+	};
+
 	const incrementHandler = value => {
 		dispatch({ type: 'increase', value });
 	};
@@ -15,8 +20,8 @@ const Counter = () => {
 		dispatch({ type: 'decrease', value });
 	};
 
-	return (
-		<main className={classes.counter}>
+	const counterContent = (
+		<React.Fragment>
 			<h1>Redux Counter</h1>
 			<div className={classes.value}>{counter}</div>
 			<div>
@@ -30,6 +35,12 @@ const Counter = () => {
 					Increace by 5
 				</button>
 			</div>
+		</React.Fragment>
+	);
+
+	return (
+		<main className={classes.counter}>
+			{showCounter && counterContent}
 			<button onClick={toggleCounterHandler}>Toggle Counter</button>
 		</main>
 	);
