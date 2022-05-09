@@ -7,8 +7,8 @@ import classes from './Counter.module.css';
 
 const Counter = () => {
 	// when you use useSelector react-redux will automatically set a subscription
-	const counter = useSelector(state => state.counter);
-	const showCounter = useSelector(state => state.showCounter);
+	const counter = useSelector(state => state.counter.counter);
+	const showCounter = useSelector(state => state.counter.showCounter);
 	const dispatch = useDispatch();
 
 	const toggleCounterHandler = () => {
