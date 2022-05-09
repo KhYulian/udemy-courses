@@ -1,12 +1,32 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, createSlice, createReducer } from '@reduxjs/toolkit';
 
-const defaultState = {
+const initialState = {
 	counter: 0,
 	showCounter: false
 };
 
-const counterReducer = (state = defaultState, action) => {
+createSlice({
+	name: 'counter',
+	initialState,
+	reducers: {
+		increase(state, action) {
+			// we can mutate state because it will automatically clone existing state and create new state object and overwrite state we are editing in immutable way.
+			state.counter = state.counter + action.value;
+		},
+		decrease(state, action) {
+			state.counter = state.counter - action.value;
+		},
+		toggleCounter(state, action) {
+			state.showCounter = !state.showCounter;
+		}
+	}
+});
+
+const counterReducer = (state = initialState, action) => {
 	if (action.type === 'increase') {
+		// state.counter++
+		// return state; - NEVER mutate existing state
+
 		return {
 			...state,
 			counter: state.counter + action.value
@@ -18,7 +38,7 @@ const counterReducer = (state = defaultState, action) => {
 			counter: state.counter - action.value
 		};
 	}
-	
+
 	if (action.type === 'toggleCounter') {
 		return {
 			...state,
