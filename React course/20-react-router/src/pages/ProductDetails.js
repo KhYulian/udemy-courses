@@ -5,7 +5,7 @@ export default function ProductDetail() {
 
 	return (
 		<section>
-			<h1>Product Detail</h1>
+			<h1>Product Details</h1>
 			<p>{params.id}</p>
 		</section>
 	);
