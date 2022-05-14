@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import classes from './Header.module.css';
 
 export default function Header() {
@@ -6,24 +6,40 @@ export default function Header() {
 		<nav className={classes.nav}>
 			<ul className={classes['nav__list']}>
 				<li className={classes['nav__item']}>
-					<Link to="/home" className={classes['nav__link']}>
+					<NavLink
+						to="/home"
+						className={classes['nav__link']}
+						activeClassName={classes.active}
+					>
 						Home
-					</Link>
+					</NavLink>
 				</li>
 				<li className={classes['nav__item']}>
-					<Link to="/products" className={classes['nav__link']}>
+					<NavLink
+						to="/products"
+						className={classes['nav__link']}
+						activeClassName={classes.active}
+					>
 						Products
-					</Link>
+					</NavLink>
 				</li>
 				<li className={classes['nav__item']}>
-					<Link to="/about" className={classes['nav__link']}>
+					<NavLink
+						to="/about"
+						className={classes['nav__link']}
+						activeClassName={classes.active}
+					>
 						About
-					</Link>
+					</NavLink>
 				</li>
 				<li className={classes['nav__item']}>
-					<Link to="/contacts" className={classes['nav__link']}>
+					<NavLink
+						to="/contacts"
+						className={classes['nav__link']}
+						activeClassName={classes.active}
+					>
 						Contacts
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 		</nav>

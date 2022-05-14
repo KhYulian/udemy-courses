@@ -26,6 +26,9 @@
 .nav__item:hover::after {
 	width: 100%;
 }
+.nav__item:hover::after {
+	width: 100%;
+}
 .nav__item:not(:last-child) {
 	margin-right: 1rem;
 }
@@ -43,4 +46,8 @@
 
 .nav__list:hover .nav__link:not(:hover) {
 	color: rgba(0, 0, 0, 0.25);
+}
+
+.active {
+	color: rgb(79, 79, 255);
 }
