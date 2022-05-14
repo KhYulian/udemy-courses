@@ -4,12 +4,12 @@ const DUMMY_QUOTES = [
 	{
 		id: 'q1',
 		author: 'Yulian',
-		quote: 'Learning React is fun!'
+		text: 'Learning React is fun!'
 	},
 	{
 		id: 'q2',
 		author: 'YulianKh',
-		quote: 'Learning React is great!'
+		text: 'Learning React is great!'
 	}
 ];
 
