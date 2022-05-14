@@ -53,5 +53,6 @@ export class AppComponent {
     this.user.gender = form.value.gender;
 
     this.submitted = true;
+    this.signupForm.reset()
   }
 }
