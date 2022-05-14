@@ -5,6 +5,7 @@ import classes from './MainNavigation.module.css';
 export default function MainNavigation() {
 	return (
 		<header className={classes.header}>
+			<div className={classes.logo}>Great Quotes</div>
 			<nav className={classes.nav}>
 				<ul>
 					<li>
@@ -13,7 +14,9 @@ export default function MainNavigation() {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to=""></NavLink>
+						<NavLink to="/new-quote" activeClassName={classes.active}>
+							Add a Quote
+						</NavLink>
 					</li>
 					<li>
 						<NavLink to=""></NavLink>
