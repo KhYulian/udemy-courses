@@ -18,15 +18,15 @@ function App() {
 				<Route path="/home">
 					<Home />
 				</Route>
-				<Route path="/products">
-					<Products />
-				</Route>
 				<Route path="/product/:id">
 					<ProductDetail />
 				</Route>
+				<Route path="/products">
+					<Products />
+				</Route>
 				<Route path="/about">
 					<About />
-				</Route>{' '}
+				</Route>
 				<Route path="/contacts">
 					<Contacts />
 				</Route>
