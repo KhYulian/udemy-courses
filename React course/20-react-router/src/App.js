@@ -1,8 +1,19 @@
+import React, { Fragment } from 'react';
+import { Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Products from './pages/Products';
+
 function App() {
 	return (
-		<div>
-			<h2>Let's get started!</h2>
-		</div>
+		<Fragment>
+			<Route path="/home">
+				<Home />
+			</Route>
+			<Route path="/products">
+				<Products />
+			</Route>
+		</Fragment>
 	);
 }
 
