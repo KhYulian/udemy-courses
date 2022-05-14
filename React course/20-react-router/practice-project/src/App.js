@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Layout from './components/layout/Layout';
+import NotFound from './pages/NotFound';
 import MainNavigation from './components/layout/MainNavigation';
 import Quotes from './pages/Quotes';
 import NewQuote from './pages/NewQuote';
@@ -22,6 +23,9 @@ function App() {
 				</Route>
 				<Route path="/new-quote">
 					<NewQuote />
+				</Route>
+				<Route path="*">
+					<NotFound />
 				</Route>
 			</Switch>
 		</Layout>
