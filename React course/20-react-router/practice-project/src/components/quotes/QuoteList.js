@@ -30,10 +30,6 @@ const QuoteList = props => {
 			pathname: location.pathname,
 			search: `?sort=${isSortingAscending ? 'desc' : 'asc'})`
 		});
-
-		// history.push(
-		// 	`${location.pathname}?sort=${isSortingAscending ? 'desc' : 'asc'}`
-		// );
 	};
 
 	return (
