@@ -1,20 +1,44 @@
 import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import Greeting from './Greeting';
 
-test('Renders Hello World as text', () => {
-//  Writing tests - three "A"s
-//  Arrangement - set up the test data. test conditions and test environment
-//  Act - Run logic that should be tested (e.g. execute function)
-//  Assert - Compare executions results with expected results
+describe('Greeting component', () => {
+  test('renders "Hello World!" as text', () => {
+    render(<Greeting/>);
 
-//  Arrangement
-  render(<Greeting/>);
+    const helloWorldElement = screen.getByText('Hello World!');
+    expect(helloWorldElement).toBeInTheDocument();
+  });
 
-//  Act
-//  Nothing ...
+  test('renders "It\'s good to see you :)" if the button is not clicked', () => {
+    render(<Greeting/>);
 
-//  Assert
-  const helloWorldElement = screen.getByText('Hello World!');
-  expect(helloWorldElement).toBeInTheDocument();
+    const notChangedParagraphElement = screen.getByText('It\'s good to see you :)');
+    expect(notChangedParagraphElement).toBeInTheDocument();
+  });
+
+  test('renders "Changed!" if the button was clicked', () => {
+    render(<Greeting/>);
+
+    const buttonElement = screen.getByRole('button');
+    userEvent.click(buttonElement);
+    const outputElement = screen.getByText('Changed!');
+
+    expect(outputElement).toBeInTheDocument();
+  });
+
+  test('removes paragraph when the button was clicked', async () => {
+    render(<Greeting/>);
+
+    const buttonElement = screen.getByRole('button');
+    userEvent.click(buttonElement);
+    const paragraphToDelete = await screen.queryByText('It\'s good to see you :)');
+
+    // expect(paragraphToDelete).toBe(null);
+    expect(paragraphToDelete).not.toBeInTheDocument();
+  });
 });
+
+
+
