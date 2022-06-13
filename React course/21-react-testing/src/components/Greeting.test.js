@@ -28,12 +28,12 @@ describe('Greeting component', () => {
     expect(outputElement).toBeInTheDocument();
   });
 
-  test('removes paragraph when the button was clicked', async () => {
+  test('removes paragraph when the button was clicked', () => {
     render(<Greeting/>);
 
     const buttonElement = screen.getByRole('button');
     userEvent.click(buttonElement);
-    const paragraphToDelete = await screen.queryByText('It\'s good to see you :)');
+    const paragraphToDelete = screen.queryByText('It\'s good to see you :)');
 
     // expect(paragraphToDelete).toBe(null);
     expect(paragraphToDelete).not.toBeInTheDocument();
